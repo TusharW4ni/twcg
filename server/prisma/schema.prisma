@@ -7,10 +7,17 @@ datasource db {
   provider = "sqlite"
 }
 
+enum Role {
+	ADMIN
+	SUPERVISOR
+	ONBOARDING_EMPLOYEE
+}
+
 model User {
   id            String    @id
   name          String
   email         String
+	role					Role			@default(ONBOARDING_EMPLOYEE)
   emailVerified Boolean   @default(false)
   image         String?
   createdAt     DateTime  @default(now())
