@@ -6,14 +6,14 @@ const otp = ref('')
 
 async function sendOtp() {
 	await authClient.emailOtp.sendVerificationOtp({
-		email: "user@example.com",
+		email: email.value,
 		type: "sign-in"
 	})
 }
 
 async function signIn() {
 	const res = await authClient.signIn.emailOtp({
-		email: "user@example.com",
+		email: email.value,
 		otp: otp.value
 	})
 	console.log({res})
